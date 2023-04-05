@@ -180,22 +180,12 @@ class Summarization:
         plt.show()
 
 
-corpus = """Acer has launched its new Aspire 3 15 and Aspire 3 14 laptops with what it claims are India's first laptop with an Intel N-series CPU. The Acer Aspire 3 is powered by the newly launched Intel Core i3-N305 CPU and is designed for casual and everyday use. The specifications are quite decent as the Aspire 3 features 8GB of RAM, SSD storage, a full-HD display, Windows 11, and a starting weight of around 1.5kg.
+# Open the file in read mode
+with open('summaries/health.txt', 'r') as file:
+    # Read the contents of the file
+    corpus = file.read()
 
-The laptops feature Acer's PurifiedVoice and AI Noise Reduction software enhancements, which are said to effectively analyse environmental ambient sound components and automatically select the most effective noise cancelling mode.
-
-Acer's Aspire 3 also comes with BlueLightShield to help lower the harmful light exposure to the users. It comes with LPDDR5 RAM and is said to feature an enhanced thermal system for more effective heat dissipation.
-
-Acer Nitro 5 With AMD Ryzen 7000 Series Launched in India At This Price
-Acer Aspire 3 15, Aspire 3 14 price in India and availability
-The Acer Aspire 3 15 officially starts at Rs. 39,999 in India and is available through Acer's offline and online stores, and other popular stores such as Vijay Sales and Amazon. Looking at Acer's online store, the 15-inch model is currently priced at Rs. 33,990 and Rs. 37,990 for the 256GB and 512GB SSD variants, respectively. Meanwhile, there's only a single variant of the 14-inch model listed for Rs. 37,990 that comes with 512GB of SSD storage.
-
-Acer Aspire 3 15, Aspire 3 14 specifications
-Acer Aspire 3 15 is only available in Pure Silver in India, and measures 18.9mm in thickness with a weight of about 1.7kg. The Aspire 3 14 on the other hand has the same thickness as the 15-inch model, but weighs 1.5kg. Both sizes offer full-HD resolution (1920x1080) TFT LCD displays with Acer's BlueLightShield to cut out blue light.
-
-Wireless connectivity includes Wi-Fi 6 and Bluetooth 5.1. All models come with 8GB of LPDDR5 RAM with either 256GB or 512GB of PCIe Gen3 (NVMe) SSD storage."""
-
-doc = Summarization(corpus, 1)
+doc = Summarization(corpus, 4)
 my_sum = doc.summarize()
 
 doc.graph()

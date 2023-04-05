@@ -3,8 +3,8 @@ import pandas as pd
 
 # Load the tokenizer and model
 model_name = "mrm8488/t5-base-finetuned-news-title-classification"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained("mrm8488/t5-base-finetuned-news-title-classification", use_auth_token='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')
+model = AutoModelForSeq2SeqLM.from_pretrained("mrm8488/t5-base-finetuned-news-title-classification", use_auth_token='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')
 
 def topic(article_text):
     try:
