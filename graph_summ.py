@@ -1,3 +1,36 @@
+""" 
+The code is a Python implementation of a summarization algorithm that extracts the most relevant sentences from a given text corpus. It uses 
+natural language processing (NLP) libraries such as NLTK and scikit-learn to preprocess and vectorize the text corpus, and then computes the 
+similarity between sentences based on the cosine similarity and longest common subsequence (LCS) algorithms. Finally, it uses the power method to 
+identify the most important sentences and returns a summary of the text.
+
+The code consists of the following functions:
+
+preprocess(sentence) - preprocesses a given sentence by removing stop words, punctuation, and converting all words to lowercase.
+
+tfIdf(corpus) - tokenizes the given corpus into sentences, preprocesses each sentence using preprocess(sentence), and vectorizes the sentences 
+using the Term Frequency-Inverse Document Frequency (TF-IDF) algorithm.
+
+lcs(X, Y) - computes the length of the longest common subsequence between two strings X and Y.
+
+lcs_etoile(s1, s2) - computes the average LCS ratio between a list of words s1 and a list of words s2.
+
+cosine(p1, p2) - computes the cosine similarity between two vectors p1 and p2.
+
+similarite(frame, alpha=0.9, similarity_threshold=0.07) - computes the similarity matrix between all pairs of sentences in a given dataframe 
+frame using the cosine similarity and LCS algorithms. The parameter alpha controls the weight of the cosine similarity, and similarity_threshold 
+is the threshold for two sentences to be considered similar.
+
+powerMethod(similarity_matrix, degrees, stopping_criterion=0.00005, max_loops=3000) - applies the power method to a given similarity matrix to 
+identify the most important sentences based on their degrees.
+
+Summarization(corpus, sum_size=5) - a class that performs summarization on a given corpus of text. The parameter corpus is the input text, and 
+sum_size is the number of sentences in the summary.
+
+summarize() - a method of the Summarization class that performs summarization using the methods described above and returns a summary of the text.
+
+graph() - a method of the Summarization class that generates a graph of the sentences in the text and their similarity scores. It uses the NetworkX and Matplotlib libraries to create the graph. """
+
 from math import sqrt
 import matplotlib.pyplot as plt
 import networkx as nx

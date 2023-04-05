@@ -35,7 +35,7 @@ def get_article_content(url):
 
 
 input_file = 'dataset/indian_news_more.csv'
-output_file = 'dataset/indian_news_more_with_content.csv'
+output_file = 'dataset/indian_news_more_with_full_content.csv'
 
 # read the input CSV file into a pandas data frame
 df = pd.read_csv(input_file)
@@ -45,7 +45,7 @@ df['full_content'] = ''
 
 # extract final URLs and get article content for each row
 for idx, row in df.iterrows():
-    url = row['url']
+    url = row['URL']
     url = find_final_url(url)
     content = get_article_content(url)
 
@@ -57,8 +57,8 @@ for idx, row in df.iterrows():
         print(f"successfully fetched content for URL: {url}")
         df.loc[idx, 'full_content'] = content
     else:
-        print(f"Using default description for URL: {url}")
-        df.loc[idx, 'full_content'] = row['description']
+        print(f"Using default content for URL: {url}")
+        df.loc[idx, 'full_content'] = row['Content']
 
 # write the updated data frame to a new CSV file
 df.to_csv(output_file, index=False)
