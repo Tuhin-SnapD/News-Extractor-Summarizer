@@ -52,7 +52,7 @@ try:
         article["description"]), clean_text(article["content"])] for article in articles["articles"]]
 
     # Write data to CSV file
-    with open("dataset/indian_news_more.csv", "w", newline="", encoding="utf-8-sig") as file:
+    with open("dataset/news_1.csv", "w", newline="", encoding="utf-8-sig") as file:
         writer = csv.writer(file)
         writer.writerow(["URL", "Title", "Description", "Content"])
         writer.writerows(indian_news_more)

@@ -34,8 +34,8 @@ def get_article_content(url):
         return ''
 
 
-input_file = 'dataset/indian_news_more.csv'
-output_file = 'dataset/indian_news_more_with_full_content.csv'
+input_file = 'dataset/news_1.csv'
+output_file = 'dataset/news_with_full_content_2.csv'
 
 # read the input CSV file into a pandas data frame
 df = pd.read_csv(input_file)

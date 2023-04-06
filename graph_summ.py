@@ -180,12 +180,19 @@ class Summarization:
         plt.show()
 
 
+with open("summaries/entertainment_one_line_summary.txt", "r") as file:
+    lines = file.readlines()
+
+with open("summaries/entertainment_one_line_summary.txt", "w") as file:
+    for line in lines:
+        file.write(line.strip() + "." + "\n")
+
 # Open the file in read mode
-with open('summaries/health.txt', 'r') as file:
+with open('summaries/entertainment_one_line_summary.txt', 'r') as file:
     # Read the contents of the file
     corpus = file.read()
 
-doc = Summarization(corpus, 4)
+doc = Summarization(corpus, 1)
 my_sum = doc.summarize()
 
 doc.graph()
