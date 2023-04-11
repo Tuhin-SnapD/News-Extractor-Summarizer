@@ -40,7 +40,8 @@ from nltk.tokenize import word_tokenize, sent_tokenize
 import string
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
-
+import plotly.graph_objs as go
+import os
 
 def preprocess(sentence):
     stop_words = stopwords.words('english')
@@ -172,28 +173,111 @@ class Summarization:
         G = nx.Graph()
         G.add_edges_from(edges)
         options = {'node_size': 800, 'width': 1, 'arrowstyle': '-'}
-        pos = nx.fruchterman_reingold_layout(G)
-        plt.figure(figsize=(12, 12))
-        nx.draw_networkx(G, pos, arrows=True, with_labels=True, 
-                        node_color='#c7e9b4', edge_color='#a6a6a6', **options)
-        # plt.axis('off')
-        plt.show()
+        pos = nx.kamada_kawai_layout(G)         
+        node_trace = go.Scatter(
+            x=[],
+            y=[],
+            text=[],
+            mode='markers',
+            hoverinfo='text',
+            marker=dict(
+                color=[],
+                size=10,
+                line=dict(width=2)))
+
+        for node in G.nodes():
+            x, y = pos[node]
+            node_trace['x'] += tuple([x])
+            node_trace['y'] += tuple([y])
+            node_trace['marker']['color'] += tuple(['#c7e9b4'])
+            node_trace['text'] += tuple([node])
+
+        edge_trace = go.Scatter(
+            x=[],
+            y=[],
+            line=dict(width=1, color='#a6a6a6'),
+            mode='lines')
+            
+        for edge in G.edges():
+            x0, y0 = pos[edge[0]]
+            x1, y1 = pos[edge[1]]
+            edge_trace['x'] += tuple([x0, x1, None])
+            edge_trace['y'] += tuple([y0, y1, None])
+
+        fig = go.Figure(data=[edge_trace, node_trace],
+                        layout=go.Layout(
+                            title='<br>Graph of Similarity',
+                            titlefont_size=16,
+                            showlegend=False,
+                            hovermode='closest',
+                            margin=dict(b=20,l=5,r=5,t=40),
+                            annotations=[dict(
+                                text="",
+                                showarrow=False,
+                                xref="paper", yref="paper",
+                                x=0.005, y=-0.002)],
+                            xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                            yaxis=dict(showgrid=False, zeroline=False, showticklabels=False)))
+
+        fig.update_traces(marker=dict(symbol='circle'))
+        fig.show()
 
 
-with open("summaries/entertainment_one_line_summary.txt", "r") as file:
-    lines = file.readlines()
 
-with open("summaries/entertainment_one_line_summary.txt", "w") as file:
-    for line in lines:
-        file.write(line.strip() + "." + "\n")
 
-# Open the file in read mode
-with open('summaries/entertainment_one_line_summary.txt', 'r') as file:
-    # Read the contents of the file
-    corpus = file.read()
+# # Open the file in read mode
+# with open('summaries/business_one_line_summary.txt', 'r') as file:
+#     # Read the contents of the file
+#     corpus = file.read()
 
-doc = Summarization(corpus, 1)
-my_sum = doc.summarize()
+# doc = Summarization(corpus, 2)
+# my_sum = doc.summarize()
 
-doc.graph()
-print(my_sum)
+# doc.graph()
+# print(my_sum)
+
+input_dir = r'dataset/multi-summaries'
+output_dir = r'dataset/final'
+
+if not os.path.exists(output_dir):
+    os.mkdir(output_dir)
+
+
+# Iterate through all txt files in the input directory
+for filename in os.listdir(input_dir):
+    if filename.endswith('.txt'):
+        # Construct the output filenames
+        output_filename = os.path.splitext(filename)[0]
+        output_text_file = os.path.join(output_dir, output_filename + '.txt')
+        output_image_file = os.path.join(output_dir, output_filename + '.png')
+
+        # Open the input text file
+        with open(os.path.join(input_dir, filename), 'r', encoding='utf-8') as file:
+            text = file.read()
+
+        # Generate the summary and graph
+        doc = Summarization(text, 1)
+        my_sum = doc.summarize()
+        doc.graph()
+
+        # Save the summary to a text file
+        with open(output_text_file, 'w', encoding='utf-8') as file:
+            file.write(my_sum)
+
+        # Save the graph as a PNG image
+        #fig.write_image(output_image_file)
+
+# # Iterate through all files in the input directory
+# for filename in os.listdir(input_dir):
+#     if filename.endswith('.txt'):
+#         # Construct the output filename
+#         output_filename = os.path.splitext(filename)[0] + '.txt'
+#         # Open the input CSV file
+#         with open(os.path.join(input_dir, filename), 'r', encoding='utf-8') as file:
+#             # create a reader 
+#             text = file.read()
+
+#     doc = Summarization(text, 1)
+#     my_sum = doc.summarize()
+#     doc.graph() #Generates image using plotly.graph_objs
+
