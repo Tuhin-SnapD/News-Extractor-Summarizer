@@ -42,6 +42,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import plotly.graph_objs as go
 import os
+import plotly.io as pio
+
 
 def preprocess(sentence):
     stop_words = stopwords.words('english')
@@ -144,8 +146,7 @@ def powerMethod(similarity_matrix,
             p_initial = p_update
     p_update = p_update/np.max(p_update)
     return p_update
-
-
+counter = 0
 class Summarization:
 
     def __init__(self, corpus, sum_size=5):
@@ -163,6 +164,8 @@ class Summarization:
         sent_list = list(tf_idf.loc[sent_index]['sentences'].values)
         summu = ' '.join(sent_list)
         return summu
+    
+    counter = 0
 
     def graph(self):
         edges = []
@@ -221,9 +224,29 @@ class Summarization:
 
         fig.update_traces(marker=dict(symbol='circle'))
         fig.show()
+        # Save the graph as an image file in the specified output directory
+        output_directory = "dataset/graphs"  # Specify the desired output directory
+        file_name = "graph_similarity.png"  # Specify the desired file name and format
+        # Create the output directory if it does not exist
+        if not os.path.exists(output_directory):
+            os.makedirs(output_directory)
+        # Save the graph as an image file with a predefined file name based on the counter
+        global counter  # Declare the counter as global again
+        counter += 1  # Increment the counter
 
+        if counter == 1:
+            file_name = "business.png"
+        elif counter == 2:
+            file_name = "entertainment.png"
+        elif counter == 3:
+            file_name = "health.png"
+        elif counter == 4:
+            file_name = "science.png"
+        else:
+            file_name = "graph_similarity_{}.png".format(counter)
 
-
+        file_path = os.path.join(output_directory, file_name)
+        pio.write_image(fig, file_path)
 
 # # Open the file in read mode
 # with open('summaries/business_one_line_summary.txt', 'r') as file:
