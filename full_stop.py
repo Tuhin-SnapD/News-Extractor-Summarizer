@@ -1,7 +1,12 @@
 import os
+from colorama import Fore, init
 
 # Directory path where the txt files are located
 directory = r"dataset/multi-summaries"
+# Initialize colorama
+init(autoreset=True)
+
+print(Fore.YELLOW + "Running full_stop.py")
 
 # Iterate through all files in the directory
 for filename in os.listdir(directory):
@@ -32,3 +37,5 @@ for filename in os.listdir(directory):
 
             # Truncate the file to the current position of the file pointer
             file.truncate()
+
+print(Fore.GREEN + "\nAdded full stops in all txt files in dataset/summaries")
