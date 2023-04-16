@@ -103,7 +103,8 @@ output_file = r'dataset/raw/news_with_full_content_2.csv'
 df = pd.read_csv(input_file)
 
 # add a new column for the article content
-df['full_content'] = ''
+df['raw_full_content'] = ''
+df['spacy_full_content'] = ''
 df['final_full_content']=''
 
 # iterate over rows and get content for each URL
@@ -111,6 +112,7 @@ for idx, row in tqdm(df.iterrows(), total=len(df), desc="Fetching article conten
     url = row['URL']
     url = find_final_url(url)
     content = get_article_content(url)
+    raw_content = content
     content = filter_content(content)
 
     # Perform multiple regex substitutions on the 'content' variable:
@@ -118,14 +120,20 @@ for idx, row in tqdm(df.iterrows(), total=len(df), desc="Fetching article conten
     # 2. Remove any characters that are not alphanumeric or whitespaces
     # 3. Remove any characters that are not word characters, whitespaces, or periods
     # Finally, strip any leading or trailing spaces from the resulting string
+    raw_content = re.sub(r'\s+', ' ', raw_content).strip()
+    raw_content = re.sub(r'[^0-9a-zA-Z\s.?!]+', '', raw_content)
+
     content = re.sub(r'\s+', ' ', content).strip()
     content = re.sub(r'[^0-9a-zA-Z\s.?!]+', '', content)
     content = re.sub(r'[^\w\s.?!]', '', content)
 
     text = content
-    df.loc[idx, 'full_content'] = text
+    df.loc[idx, 'raw_full_content'] = raw_content
+    df.loc[idx, 'spacy_full_content'] = text
+    
 
     larger_text = max([text, row['Description'], row['Content']], key=len)
+    larger_text = re.sub(r'\d{4} chars$', '', larger_text)
     df.loc[idx, 'final_full_content'] = larger_text
 
 # write the updated data frame to a new CSV file

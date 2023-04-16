@@ -247,13 +247,21 @@ class Summarization:
 input_dir = r'dataset/multi-summaries'
 output_dir = r'dataset'
 
+# Create the 'final' and 'graphs' directories if they don't exist
+final_dir = os.path.join(output_dir, 'final')
+if not os.path.exists(final_dir):
+    os.makedirs(final_dir)
+
+graphs_dir = os.path.join(output_dir, 'graphs')
+if not os.path.exists(graphs_dir):
+    os.makedirs(graphs_dir)
+
 # Iterate through all files in the input directory
 for filename in os.listdir(input_dir):
     if filename.endswith('.txt'):
         # Construct the output filenames for TXT files
         output_filename = os.path.splitext(filename)[0]
-        output_text_file = os.path.join(
-            output_dir, 'final', output_filename + '.txt')
+        output_text_file = os.path.join(final_dir, output_filename + '.txt')
 
         # Read the input text file
         with open(os.path.join(input_dir, filename), 'r') as file:
@@ -269,7 +277,7 @@ for filename in os.listdir(input_dir):
 
         # Construct the output filename for PNG files using the same output_filename as the text file
         graph_filename = output_filename + '.png'
-        file_path = os.path.join(output_dir, 'graphs', graph_filename)
+        file_path = os.path.join(graphs_dir, graph_filename)
 
         # Save the graph as an image file
         pio.write_image(doc.graph(), file_path)

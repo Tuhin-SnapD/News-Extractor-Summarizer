@@ -14,13 +14,11 @@ sequentially.
 import subprocess
 
 files_to_run = [
-    'news_crawl.py',
-    'full_content.py',
-    'data_clean.py',
-    'topic_modelling.py',
-    'topic_cluster_formation.py',
-    'multi_summ.py',
-    'full_stop.py',
+    # 'news_crawl.py',
+    # 'full_content.py',
+    # 'topic_modelling.py',
+    # 'topic_cluster_formation.py',
+    # 'multi_summ.py',
     'graph_summ.py',
     'final.py'
 ]

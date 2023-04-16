@@ -52,6 +52,25 @@ print('Loading model')
 model = PegasusForConditionalGeneration.from_pretrained('cache_dir/transformers/google/xsum')
 print('Model and Tokenizer loaded')
 
+def multi(text):
+    text = text.strip()  # Remove leading/trailing whitespaces
+    # Ensure input text is formatted as a single string with sentences/paragraphs separated by newlines
+    text = text.replace("\n", " ")
+    text = re.sub(r'[^\w\s\.]', '', text)
+    # Step 3: Tokenize and encode the input text
+    tokens = tokenizer.encode(text, return_tensors='pt', max_length=512, truncation=True)
+    # Check if token count exceeds the model's maximum limit
+    if tokens.shape[1] > model.config.max_position_embeddings:
+        print("Input text is too long. Please shorten it.")
+        exit(1)
+
+    # Step 4: Generate summaries
+    summary_ids = model.generate(tokens, max_length=150, num_beams=4, temperature=1.0)
+    summaries = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    if not summaries.endswith('.'):
+        # If not, add a period at the end of the line
+        summaries += '.'
+    return summaries
 
 # Set the input and output directories
 input_dir = r'dataset/topics'
@@ -60,7 +79,6 @@ output_dir = r'dataset/multi-summaries'
 # Create the output directory if it does not exist
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
-
 
 # Iterate through all csv files in the input directory
 for filename in os.listdir(input_dir):
@@ -84,10 +102,8 @@ for filename in os.listdir(input_dir):
         
         # Generate summary for each document and export the result summary in a txt file with the same name as the input CSV file
         with open(os.path.join(output_dir, output_filename), "w") as f:
-            for doc in tqdm(docs, desc="Summarising articles"):
-                text = re.sub(r'[^\w\s\.]', '', doc)
-                tokens = tokenizer(text, truncation=True, padding="longest", return_tensors="pt")
-                summary = model.generate(**tokens, max_new_tokens=128) # Update max_length to max_new_tokens
-                result = tokenizer.decode(summary[0], skip_special_tokens=True)
-                f.write(result + "\n")
+            for doc in tqdm(docs, desc=f"Summarising articles for {output_filename}"):
+                text = doc
+                summary = multi(text)
+                f.write(summary + "\n")
         print(Fore.GREEN + "Summary generation completed, file {}. Check {} for results.\n".format(filename, output_filename))
