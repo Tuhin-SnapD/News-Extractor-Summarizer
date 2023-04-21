@@ -1,7 +1,195 @@
-/* CSS styles for the website */
-/* Add your own custom styles as needed */
+/* Reset default margin and padding */
+body, h1, button, img {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  background-color: #009688;
+  color: #fff;
+}
+
+/* Style buttons */
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  background-color: #009688;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Hover effect on buttons */
+button:hover {
+  background-color: #00796b;
+}
+
+/* Style content div */
+#content {
+  width: 80%;
+  max-width: 800px; /* Add a max-width to prevent it from becoming too wide on larger screens */
+  margin: 0 auto; /* Center the div horizontally */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style text inside content div */
+#content p {
+  font-size: 18px; /* Increase font size to make it bigger */
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Style image container and image */
 #image-container {
-    margin-top: 20px;
-  }
-  
+  text-align: center;
+  /* margin-top: 20px; */
+}
+
+#image {
+  max-width: 100%;
+  /* height: auto; */
+  border-radius: 10px; /* Add border radius for rounded corners */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+}
+
+#searchResultsContainer h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center; /* Add text-align: center to center the h2 tag */
+}
+
+/* Style search button */
+#searchBtn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  background-color: #009688;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Hover effect on search button */
+#searchBtn:hover {
+  background-color: #00796b;
+}
+/* Style image container and image */
+#image-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px; /* Add border radius for rounded corners */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+}
+
+/* Style search results container and items */
+#searchResultsContainer {
+  margin-top: 40px; /* Increase margin top for search results container */
+}
+
+#searchResults {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.searchResultItem {
+  flex-basis: calc(20% - 20px);
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 10px;
+  transition: transform 0.3s ease; /* Add transition for smoother hover effect */
+}
+
+.searchResultItem:hover {
+  transform: scale(1.05); /* Add zoom-in effect on hover */
+}
+
+.searchResultItem img {
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.searchResultItem h2 {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.searchResultItem a {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#searchResults div {
+  flex-basis: calc(25% - 20px);
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+#searchResults img {
+  width: 80%;
+  height: 50%;
+  object-fit: cover;
+}
+
+#searchResults h3 {
+  margin-top: 10px;
+}
+
+footer {
+  background-color: #f8f8f8;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0056b3;
+}

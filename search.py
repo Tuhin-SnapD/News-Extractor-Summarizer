@@ -1,8 +1,13 @@
 import requests
+import os
+from dotenv import load_dotenv
 
-# Set your Google Custom Search JSON API key and search engine ID
-api_key = 'AIzaSyBkEO5llHX0EHh8kSHHT_ghA91M5NWrCNk'
-search_engine_id = '53ccc6eef7ace491c'
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the environment variable
+api_key = os.getenv('GOOGLE_API')
+search_engine_id = os.getenv('SEARCH_ENGINE_ID')
 
 # Function to perform a web search and fetch results
 def search_web(query):

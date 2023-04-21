@@ -1,20 +1,44 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Text and Image Viewer with Google Custom Search</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Text and Image Viewer with Google Custom Search</h1>
-  <button id="btn1">Business</button>
-  <button id="btn2">Entertainment</button>
-  <button id="btn3">Health</button>
-  <button id="btn4">Science</button>
-  <div id="content"></div>
-  <div id="image-container">
-    <img id="image" src="" alt="Image">
-  </div>
-  <button id="searchBtn">Search on Google</button>
-  <script src="script.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>News Viewer</title>
+  </head>
+  <body>
+    <h1>Important News Viewer, Your one stop destination for Important news.</h1>
+    <button id="btn1">Business</button>
+    <button id="btn2">Entertainment</button>
+    <button id="btn3">Health</button>
+    <button id="btn4">Science</button>
+    <div id="content"></div>
+    <div id="image-container">
+      <img id="image" src="" alt="Image" />
+    </div>
+    <button id="searchBtn">Search on Google</button>
+    <div id="searchResultsContainer">
+      <!-- Container for search results -->
+      <h2>Search Results</h2>
+      <!-- Heading for search results -->
+      <div id="searchResults">
+        <div id="image-container">
+          <img id="image" src="" alt="Image" />
+        </div>
+      </div>
+      <!-- Search results will be displayed here -->
+    </div>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+  <footer>
+    <div class="container">
+      <p>
+        © 2023 Your Website Name. All rights reserved. | 
+        <a href="https://github.com/Tuhin-SnapD" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </p>
+    </div>
+  </footer>
+  
 </html>

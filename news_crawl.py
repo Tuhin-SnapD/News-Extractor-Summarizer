@@ -29,6 +29,13 @@ import sys
 from colorama import init, Fore
 from newsapi import NewsApiClient
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the environment variable
+news_api_key = os.getenv('NEWS_API')
 
 # Initialize colorama
 init(autoreset=True)
@@ -36,7 +43,7 @@ init(autoreset=True)
 print(Fore.YELLOW + "Running news_crawl.py")
 
 # Initialize NewsApiClient with API key
-newsapi = NewsApiClient(api_key='90501f4112d14afa937413adcde448a3')
+newsapi = NewsApiClient(api_key=news_api_key)
 
 def clean_text(text):
     """Clean the text by replacing newlines with spaces, removing extra spaces and symbols."""
