@@ -37,7 +37,7 @@ These directories will be used by the Hugging Face Transformers library to cache
 
 Paste these files into the xsum directory created earlier.
 
-**You will also need to download the following files from https://huggingface.co/mrm8488/t5-base-finetuned-news-title-classification:**
+**You will also need to download the following files from https://huggingface.co/mrm8488/t5-base-finetuned-news-titles-classification:**
 
 - config.json
 - pytorch_model.bin
