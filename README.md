@@ -25,15 +25,21 @@ cache_dir/
 ```
 You can create these directories using the following command:
 ```
-mkdir -p cache_dir/transformers/google/xsum
-mkdir -p cache_dir/transformers/mrm8488/t5-base-finetuned-news-title-classification
+mkdir -p cache_dir\transformers\google\xsum
+mkdir -p cache_dir\transformers\mrm8488\t5-base-finetuned-news-title-classification
 ```
 These directories will be used by the Hugging Face Transformers library to cache the pre-trained models and tokenizers.
 
 **Next, you will need to download the following files from https://huggingface.co/google/pegasus-xsum:**
 
+- .gitattributes
 - config.json
+- generation_config.json
 - pytorch_model.bin
+- special_tokens_map.json
+- spiece.model
+- tokenizer.json
+- tokenizer_config.json
 
 Paste these files into the xsum directory created earlier.
 
