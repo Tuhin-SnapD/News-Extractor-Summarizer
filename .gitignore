@@ -1,5 +1,11 @@
-cache_dir/
 .env
 
 app/config.js
 node_modules/
+
+cache_dir/transformers/google/xsum/pytorch_model.bin
+cache_dir/transformers/mrm8488/t5-base-finetuned-news-title-classification/pytorch_model.bin
+cache_dir/transformers/models--google--pegasus-xsum
+
+dataset/
+.gitignore
