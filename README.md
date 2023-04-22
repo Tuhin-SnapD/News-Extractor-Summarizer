@@ -15,7 +15,7 @@ Or
 conda create --name env_name --file requirements.txt
 ```
 ## Setup
-**To use this project, you will need to create two cache directories with the following structure in the 'News-Extractor-Summarizer' folder:**
+**To use this project, there are two cache directories with the following structure in the 'News-Extractor-Summarizer' folder:**
 ```
 cache_dir/
 ├── transformers/
@@ -25,11 +25,7 @@ cache_dir/
 │       └── t5-base-finetuned-news-title-classification/
 
 ```
-You can create these directories using the following command:
-```
-mkdir -p cache_dir\transformers\google\xsum
-mkdir -p cache_dir\transformers\mrm8488\t5-base-finetuned-news-title-classification
-```
+
 These directories will be used by the Hugging Face Transformers library to cache the pre-trained models and tokenizers.
 
 To complete the setup, please follow these steps:
