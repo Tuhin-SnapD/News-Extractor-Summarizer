@@ -8,4 +8,5 @@ cache_dir/transformers/mrm8488/t5-base-finetuned-news-title-classification/pytor
 cache_dir/transformers/models--google--pegasus-xsum
 
 dataset/
+dataset\
 .gitignore
