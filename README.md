@@ -45,7 +45,7 @@ Now run the following command
 python -u main.py 
 ```
 
-This will run a series of different python scripts available in the directory in order to create various datatsets.
+This will run a series of different python scripts available in the directory in order to create various datatsets in a newly made dataset directory.
 
 After datasets have been created run the app/index.html, to view the results in the browser and to google search the final outputs and read more about it.
 
