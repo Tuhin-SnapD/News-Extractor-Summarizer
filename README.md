@@ -64,6 +64,9 @@ This will run a series of different python scripts available in the directory in
 
 After datasets have been created run the app/index.html, to view the results in the browser and to google search the final outputs and read more about it.
 
+## Algorithm
+![Algo](https://github.com/Tuhin-SnapD/Tuhin-SnapD/blob/main/Algo.png.jpg)
+
 ## Contributing
 Contributions to this repository are welcome! If you have an idea for a new summarization model or an improvement to an existing one, feel free to create a pull request.
 
