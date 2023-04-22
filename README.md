@@ -12,10 +12,48 @@ pip install -r requirements.txt
 **or** 
 conda create --name env_name --file requirements.txt
 ```
-Delete the dataset folder from the directory.
+### Setup
+**To use this project, you will need to create two cache directories with the following structure in the 'News-Extractor-Summarizer' folder:**
+```
+cache_dir/
+├── transformers/
+│   ├── google/
+│   │   └── xsum/
+│   └── mrm8488/
+│       └── t5-base-finetuned-news-title-classification/
 
-Rename the file env.template to .env as well as app/config.template.js to app/config.js and replace the placeholder values with your own [NewsAPI](https://newsapi.org/) and [Google API key](https://console.developers.google.com/)
+```
+You can create these directories using the following command:
+```
+mkdir -p cache_dir/transformers/google/xsum
+mkdir -p cache_dir/transformers/mrm8488/t5-base-finetuned-news-title-classification
+```
+These directories will be used by the Hugging Face Transformers library to cache the pre-trained models and tokenizers.
 
+**Next, you will need to download the following files from https://huggingface.co/google/pegasus-xsum:**
+
+- config.json
+- pytorch_model.bin
+
+Paste these files into the xsum directory created earlier.
+
+**You will also need to download the following files from https://huggingface.co/mrm8488/t5-base-finetuned-news-title-classification:**
+
+- config.json
+- pytorch_model.bin
+- special_tokens_map.json
+- tokenizer_config.json
+- spiece.model
+- gitattributes.txt
+
+Paste these files into the t5-base-finetuned-news-title-classification directory created earlier.
+
+**Delete the dataset folder from the directory.**
+
+**Rename the file env.template to .env as well as app/config.template.js to app/config.js and replace the placeholder values with your own [NewsAPI](https://newsapi.org/) and [Google API key](https://console.developers.google.com/)**
+
+
+### Usage
 Now run the following command
 
 ```
