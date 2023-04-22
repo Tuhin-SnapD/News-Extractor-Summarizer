@@ -9,11 +9,13 @@ Clone the repository to your local machine by running
 git clone https://github.com/Tuhin-SnapD/News-Extractor-Summarizer.git
 cd News-Extractor-Summarizer
 pip install -r requirements.txt 
-**or** 
+```
+Or
+```
 conda create --name env_name --file requirements.txt
 ```
 ## Setup
-**To use this project, you will need to create two cache directories with the following structure in the 'News-Extractor-Summarizer' folder:**
+**To use this project, there are two cache directories with the following structure in the 'News-Extractor-Summarizer' folder:**
 ```
 cache_dir/
 ├── transformers/
@@ -23,40 +25,17 @@ cache_dir/
 │       └── t5-base-finetuned-news-title-classification/
 
 ```
-You can create these directories using the following command:
-```
-mkdir -p cache_dir\transformers\google\xsum
-mkdir -p cache_dir\transformers\mrm8488\t5-base-finetuned-news-title-classification
-```
+
 These directories will be used by the Hugging Face Transformers library to cache the pre-trained models and tokenizers.
 
-**Next, you will need to download the following files from https://huggingface.co/google/pegasus-xsum:**
+To complete the setup, please follow these steps:
 
-- .gitattributes
-- config.json
-- generation_config.json
-- pytorch_model.bin
-- special_tokens_map.json
-- spiece.model
-- tokenizer.json
-- tokenizer_config.json
+      - Go to https://huggingface.co/google/pegasus-xsum and download the file 'pytorch_model.bin'.
+      - Move the downloaded file 'pytorch_model.bin' into the 'xsum' directory.
+      - Next, go to https://huggingface.co/mrm8488/t5-base-finetuned-news-titles-classification and download the file 'pytorch_model.bin'.
+      - Move the downloaded file 'pytorch_model.bin' into the 't5-base-finetuned-news-title-classification' directory.
 
-Paste these files into the xsum directory created earlier.
-
-**You will also need to download the following files from https://huggingface.co/mrm8488/t5-base-finetuned-news-titles-classification:**
-
-- config.json
-- pytorch_model.bin
-- special_tokens_map.json
-- tokenizer_config.json
-- spiece.model
-- gitattributes.txt
-
-Paste these files into the t5-base-finetuned-news-title-classification directory created earlier.
-
-**Delete the dataset folder from the directory.**
-
-**Rename the file env.template to .env as well as app/config.template.js to app/config.js and replace the placeholder values with your own [NewsAPI](https://newsapi.org/) and [Google API key](https://console.developers.google.com/)**
+**Rename the file env.template to .env as well as app/config.template.js to app/config.js and replace the placeholder values with your own [NewsAPI Key](https://newsapi.org/) and [Google API Key and Search Engine ID](https://console.developers.google.com/)**
 
 
 ## Usage
@@ -66,7 +45,7 @@ Now run the following command
 python -u main.py 
 ```
 
-This will run a series of different python scripts available in the directory in order to create various datatsets.
+This will run a series of different python scripts available in the directory in order to create various datatsets in a newly made dataset directory.
 
 After datasets have been created run the app/index.html, to view the results in the browser and to google search the final outputs and read more about it.
 
