@@ -31,9 +31,9 @@ These directories will be used by the Hugging Face Transformers library to cache
 To complete the setup, please follow these steps:
 
       - Go to https://huggingface.co/google/pegasus-xsum and download the file 'pytorch_model.bin'.
-      - Move the downloaded file 'pytorch_model.bin' into the 'xsum' directory you created earlier.
+      - Move the downloaded file 'pytorch_model.bin' into the 'xsum' directory.
       - Next, go to https://huggingface.co/mrm8488/t5-base-finetuned-news-titles-classification and download the file 'pytorch_model.bin'.
-      - Move the downloaded file 'pytorch_model.bin' into the 't5-base-finetuned-news-title-classification' directory you created earlier.
+      - Move the downloaded file 'pytorch_model.bin' into the 't5-base-finetuned-news-title-classification' directory.
 
 **Rename the file env.template to .env as well as app/config.template.js to app/config.js and replace the placeholder values with your own [NewsAPI Key](https://newsapi.org/) and [Google API Key and Search Engine ID](https://console.developers.google.com/)**
 
