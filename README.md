@@ -64,10 +64,6 @@ This will run a series of different python scripts available in the directory in
 
 After datasets have been created run the app/index.html, to view the results in the browser and to google search the final outputs and read more about it.
 
-## Algorithm
-This is the process flow of the project:
-![algo](https://drive.google.com/file/d/1alwE2wnzn2nE_kGtFVFOSSJc9HWuc6ac/preview)
-
 ## Contributing
 Contributions to this repository are welcome! If you have an idea for a new summarization model or an improvement to an existing one, feel free to create a pull request.
 
